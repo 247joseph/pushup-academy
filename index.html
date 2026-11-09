@@ -197,33 +197,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;
 footer a{text-decoration:none}
 footer .tag{font-family:var(--display);color:var(--magenta);font-weight:600}
 
-/* Dashboard shell (future CRM) */
-#dash{display:none;min-height:70vh}
-body.dash-mode #site{display:none}
-body.dash-mode #dash{display:block}
-.dash-login{max-width:420px;margin:60px auto;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:2rem;box-shadow:var(--shadow)}
-.dash-login img{height:48px;width:auto;margin-bottom:1rem}
-.dash-app{display:grid;grid-template-columns:230px 1fr;gap:1.5rem;padding-block:1.5rem}
-.side{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1rem;display:grid;gap:.3rem;align-content:start;height:fit-content}
-.side a{display:flex;align-items:center;gap:.6rem;padding:.6rem .8rem;border-radius:12px;text-decoration:none;font-weight:800;color:var(--muted);font-size:.95rem}
-.side a.active,.side a:hover{background:var(--magenta-soft);color:var(--magenta)}
-.side .soon{margin-left:auto;font-size:.65rem;letter-spacing:.08em;background:var(--orange-soft);color:var(--orange-2);padding:.15rem .45rem;border-radius:6px}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1rem 0 1.5rem}
-.kpi{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem 1.2rem}
-.kpi .v{font-family:var(--display);font-size:2rem;font-weight:700;color:var(--magenta);font-variant-numeric:tabular-nums}
-.kpi .l{font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.table-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:16px}
-table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:560px}
-th,td{text-align:left;padding:.8rem 1rem;border-bottom:1px solid var(--line)}
-th{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-tr:last-child td{border-bottom:0}
-.status{font-size:.75rem;font-weight:800;padding:.25rem .6rem;border-radius:999px;background:var(--orange-soft);color:var(--orange-2)}
-.status.ok{background:#E3F6EA;color:#1B7A3E}
-:root[data-theme="dark"] .status.ok{background:#173A26;color:#7AD79B}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .status.ok{background:#173A26;color:#7AD79B}}
-.placeholder{border:2px dashed var(--line);border-radius:16px;padding:2rem;text-align:center;color:var(--muted);margin-top:1.5rem}
-@media (max-width:860px){.dash-app{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:480px){.kpis{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -240,10 +213,10 @@ tr:last-child td{border-bottom:0}
       <li><a href="#founders">Founders</a></li>
       <li><a href="#support">Learning Support</a></li>
       <li><a href="#branches">Branches</a></li>
-      <li><a href="#dashboard" style="color:var(--magenta)">Dashboard</a></li>
+      <li><a href="#" data-portal-link style="color:var(--magenta)">Dashboard</a></li>
     </ul>
     <div class="nav-cta">
-      <a class="btn btn-ghost" href="#dashboard">Dashboard</a>
+      <a class="btn btn-ghost" href="#" data-portal-link>Dashboard</a>
       <a class="btn btn-primary" href="#enquire">Book a Free Demo</a>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
@@ -488,60 +461,18 @@ tr:last-child td{border-bottom:0}
   <div class="wrap">
     <div><span class="tag">PushUP Academy</span> · Building Knowledge, Creating Success</div>
     <div>Tavarekere · Koramangala · Bengaluru</div>
-    <div><a href="#dashboard">Staff dashboard</a></div>
+    <div><a href="#" data-portal-link>Staff dashboard</a></div>
   </div>
 </footer>
 </div>
 
-<!-- Dashboard shell: placeholder for the future CRM. Swap the login and tables for a real backend later. -->
-<div id="dash">
-  <div class="wrap">
-    <div id="dashLogin" class="dash-login">
-      <img src="logo-trim.png" alt="PushUP Academy">
-      <h3>Staff dashboard</h3>
-      <p class="note" style="margin:.4rem 0 1.2rem">Preview of the CRM area. Use access code <strong>pushup</strong> to open the demo.</p>
-      <form id="loginForm">
-        <label>Access code<input id="d_code" type="password" required></label>
-        <button class="btn btn-magenta" type="submit">Open dashboard</button>
-        <div class="toast" id="loginErr">That code didn't match. Try again.</div>
-      </form>
-      <p class="note" style="margin-top:1rem"><a href="#top">← Back to website</a></p>
-    </div>
-    <div id="dashApp" class="dash-app" hidden>
-      <nav class="side">
-        <a class="active" href="#dashboard">Overview</a>
-        <a href="#dashboard">Enquiries</a>
-        <a href="#dashboard">Students <span class="soon">Soon</span></a>
-        <a href="#dashboard">Batches <span class="soon">Soon</span></a>
-        <a href="#dashboard">Fees <span class="soon">Soon</span></a>
-        <a href="#dashboard">Attendance <span class="soon">Soon</span></a>
-        <a href="#dashboard">Assessments <span class="soon">Soon</span></a>
-        <a href="#top">← Website</a>
-      </nav>
-      <div style="min-width:0">
-        <p class="eyebrow">Overview</p>
-        <h2 style="margin-top:.3rem">Good to see you, team</h2>
-        <div class="kpis">
-          <div class="kpi"><div class="v" id="k_enq">0</div><div class="l">New enquiries</div></div>
-          <div class="kpi"><div class="v">2</div><div class="l">Branches</div></div>
-          <div class="kpi"><div class="v">4</div><div class="l">Subjects</div></div>
-          <div class="kpi"><div class="v">6</div><div class="l">Batches planned</div></div>
-        </div>
-        <h3 style="margin-bottom:.8rem">Recent enquiries</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Student</th><th>Class · Board</th><th>Subjects</th><th>Branch</th><th>Phone</th><th>Status</th></tr></thead>
-            <tbody id="enqRows"></tbody>
-          </table>
-        </div>
-        <div class="placeholder">Students, batches, fees, attendance and assessment modules will plug in here once the CRM backend is connected.</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script>
 (function(){
+  // Staff portal (Pinion). Will move to https://portal.pushupacadamy.com once that custom domain is set up.
+  var PORTAL_URL='https://pinion-production.up.railway.app/login?org=pushup';
+  document.querySelectorAll('[data-portal-link]').forEach(function(a){a.href=PORTAL_URL});
+
   var menu=document.getElementById('menu'),btn=document.getElementById('menuBtn');
   btn.addEventListener('click',function(){var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
   menu.addEventListener('click',function(e){if(e.target.tagName==='A'){menu.classList.remove('open');btn.setAttribute('aria-expanded','false')}});
@@ -549,25 +480,6 @@ tr:last-child td{border-bottom:0}
   function load(){try{return JSON.parse(localStorage.getItem('pushup_enq')||'[]')}catch(e){return []}}
   function save(a){try{localStorage.setItem('pushup_enq',JSON.stringify(a))}catch(e){}}
   var enq=load();
-  var seeded=enq.length?enq:[
-    {name:'Aarav Menon',cls:'Class 10',board:'CBSE',subject:'Maths + Science',branch:'Koramangala',phone:'98XXXXXX12',status:'new'},
-    {name:'Diya Rao',cls:'Class 9',board:'ICSE',subject:'Mathematics',branch:'Tavarekere',phone:'97XXXXXX45',status:'contacted'}
-  ];
-
-  function render(){
-    var tb=document.getElementById('enqRows');tb.innerHTML='';
-    var list=enq.length?enq:seeded;
-    list.slice().reverse().forEach(function(r){
-      var tr=document.createElement('tr');
-      tr.innerHTML='<td><strong></strong></td><td></td><td></td><td></td><td></td><td><span class="status'+(r.status==='contacted'?' ok':'')+'"></span></td>';
-      var c=tr.querySelectorAll('td');
-      c[0].firstChild.textContent=r.name;c[1].textContent=r.cls+' · '+r.board;c[2].textContent=r.subject;c[3].textContent=r.branch;c[4].textContent=r.phone;
-      c[5].firstChild.textContent=r.status==='contacted'?'Contacted':'New';
-      tb.appendChild(tr);
-    });
-    document.getElementById('k_enq').textContent=list.filter(function(r){return r.status==='new'}).length;
-  }
-
   document.getElementById('enqForm').addEventListener('submit',function(e){
     e.preventDefault();
     enq.push({name:document.getElementById('f_name').value.trim(),phone:document.getElementById('f_phone').value.trim(),
@@ -577,24 +489,6 @@ tr:last-child td{border-bottom:0}
     var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show')},5000);
   });
 
-  var unlocked=false;
-  document.getElementById('loginForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    if(document.getElementById('d_code').value==='pushup'){unlocked=true;showDash()}
-    else{document.getElementById('loginErr').classList.add('show')}
-  });
-  function showDash(){
-    document.body.classList.add('dash-mode');
-    document.getElementById('dashLogin').hidden=unlocked;
-    document.getElementById('dashApp').hidden=!unlocked;
-    if(unlocked)render();
-    window.scrollTo(0,0);
-  }
-  function route(){
-    if(location.hash==='#dashboard'){showDash();var c=document.getElementById('d_code');if(!unlocked&&c)c.focus()}
-    else{document.body.classList.remove('dash-mode')}
-  }
-  window.addEventListener('hashchange',route);route();
 })();
 </script>
 
